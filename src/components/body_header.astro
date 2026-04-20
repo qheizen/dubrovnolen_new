@@ -1,0 +1,26 @@
+---
+import { useTranslations, type Language } from '../i18n/utils';
+
+interface IHeader {
+  lang: Language;
+}
+
+const {lang} = Astro.props;
+
+const t = useTranslations(lang);
+const manufacturer = t('manufacturer.title')
+---
+<header class="dl_header" id="dl_header"> 
+    <div class="container">
+        <div class="dl_header_logo"> 
+            <img src="/images/mainlogo.svg" alt="Logo" class="dl_logo" id="dl_header_main_logo">
+            <span class="dl_span" id="dl_header_main_span">{manufacturer}</span>
+        </div>
+        <nav class="dl_header_nav" id="navigation">
+            <a href=`/${lang}/` class="dl_header_link">Главная</a>
+            <a href=`/${lang}/products` class="dl_header_link">Продукция</a>
+            <a href=`/${lang}/contacts` class="dl_header_link">Контакты</a>
+            <a href=`/${lang}/about` class="dl_header_link">О нас</a>
+        </nav>
+    </div>
+</header>
