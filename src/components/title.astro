@@ -1,0 +1,17 @@
+---
+import { useTranslations, type Language } from '../i18n/utils';
+
+interface Props {
+  titleKey: string;
+  lang: Language;
+}
+
+const {titleKey, lang} = Astro.props;
+console.log(titleKey);
+
+const t = useTranslations(lang);
+const title = t(`title.${titleKey}`) + ' - ' + t('manufacturer.title');
+---
+
+<title>{title}</title>
+<meta property="og:title" content={title}/>
