@@ -5,9 +5,9 @@
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    max-width: 100vw; /* Предотвращает выход за пределы */
+    max-width: 100vw;
     height: 9vh;
-    min-height: 60px; /* Минимальная высота для стабильности */
+    min-height: 60px;
     background-color: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -16,13 +16,14 @@
     padding: 0 3rem;
     z-index: 1000;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-sizing: border-box; /* Важно для правильного расчета ширины */
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 /* Состояние при скролле */
 .container.scrolled {
     width: 70%;
-    max-width: 1400px; /* Ограничение для больших экранов */
+    max-width: 1400px;
     height: 6vh;
     min-height: 50px;
     border-radius: 50px;
@@ -36,19 +37,23 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    flex-shrink: 0; /* Предотвращает сжатие */
-    min-width: 0; /* Для правильной работы flex */
+    flex-shrink: 0;
+    min-width: 0;
+    max-width: 35%;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
 }
 
 .dl_logo {
-    height: 80px; /* Фиксированная высота вместо процентов */
+    height: 80px;
     width: auto;
     min-height: 30px;
     max-height: 80px;
-    flex-shrink: 0; /* Запрещает сжатие логотипа */
-    object-fit: contain; /* Сохраняет пропорции изображения */
+    flex-shrink: 0;
+    object-fit: contain;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    vertical-align: middle;
 }
 
 .container.scrolled .dl_logo {
@@ -57,13 +62,15 @@
 }
 
 .dl_span {
-    font-size: clamp(1.6rem, 1.5vw, 1.4rem);
+    font-size: clamp(1rem, 1.5vw, 1.4rem);
     font-weight: 600;
     color: #333;
     white-space: nowrap;
-    overflow: hidden; /* Предотвращает переполнение */
-    text-overflow: ellipsis; /* Добавляет троеточие при переполнении */
+    overflow: hidden;
+    text-overflow: ellipsis;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 1;
+    min-width: 0;
 }
 
 .container.scrolled .dl_span {
@@ -73,22 +80,24 @@
 /* Навигация */
 .dl_header_nav {
     display: flex;
-    gap: clamp(1rem, 2vw, 2.5rem); /* Адаптивный gap */
+    gap: clamp(1rem, 2vw, 2.5rem);
     align-items: center;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    max-width: 50%; /* Ограничение ширины навигации */
+    max-width: 45%;
     justify-content: center;
-    flex-wrap: nowrap; /* Запрещает перенос */
+    flex-wrap: nowrap;
+    z-index: 1;
 }
 
 .container.scrolled .dl_header_nav {
     gap: clamp(0.75rem, 1.5vw, 1.5rem);
-    max-width: 60%;
+    max-width: 50%;
 }
 
+/* Ссылки навигации */
 .dl_header_link {
     text-decoration: none;
     color: #333;
@@ -97,18 +106,40 @@
     position: relative;
     white-space: nowrap;
     transition: all 0.3s ease;
-    flex-shrink: 0; /* Предотвращает сжатие ссылок */
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.25rem;
 }
 
 .container.scrolled .dl_header_link {
     font-size: clamp(0.75rem, 1vw, 0.95rem);
 }
 
+/* Иконки навигации - скрыты по умолчанию на десктопе */
+.dl_nav_icon {
+    width: 20px;
+    height: 20px;
+    display: none;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+/* Текст навигации - показан по умолчанию */
+.dl_nav_text {
+    display: inline;
+    transition: all 0.3s ease;
+}
+
+/* Эффект подчеркивания */
 .dl_header_link::after {
     content: '';
     position: absolute;
     bottom: -5px;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 0;
     height: 2px;
     background-color: #333;
@@ -116,14 +147,122 @@
 }
 
 .dl_header_link:hover::after {
-    width: 100%;
+    width: 80%;
 }
 
 .dl_header_link:hover {
     color: #000;
 }
 
-/* Адаптивность */
+/* КЛЮЧЕВОЕ ПРАВИЛО: Если ширина < высоты - показываем иконки, скрываем manufacturer */
+@media (max-aspect-ratio: 1/1) {
+    /* Скрываем текст manufacturer */
+    .dl_span {
+        display: none !important;
+    }
+    
+    /* Уменьшаем gap логотипа */
+    .dl_header_logo {
+        gap: 0;
+        max-width: auto;
+    }
+    
+    /* Показываем БОЛЬШИЕ иконки, скрываем текст */
+    .dl_nav_icon {
+        display: block !important;
+        width: 28px !important;
+        height: 28px !important;
+    }
+    
+    .dl_nav_text {
+        display: none !important;
+    }
+    
+    .dl_header_nav {
+        gap: clamp(1.5rem, 4vw, 2.5rem);
+        max-width: none;
+        position: static;
+        transform: none;
+        margin-left: auto;
+    }
+    
+    .container {
+        justify-content: space-between;
+    }
+    
+    /* Tooltip при наведении на иконки */
+    .dl_header_link::before {
+        content: attr(data-label);
+        position: absolute;
+        bottom: -40px;
+        left: 50%;
+        transform: translateX(-50%) scale(0);
+        background-color: rgba(0, 0, 0, 0.9);
+        color: white;
+        padding: 0.6rem 1rem;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1001;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        font-weight: 500;
+    }
+    
+    /* Стрелка tooltip */
+    .dl_header_link::after {
+        content: '';
+        position: absolute;
+        bottom: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid rgba(0, 0, 0, 0.9);
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .dl_header_link:hover::before {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+    
+    .dl_header_link:hover::after {
+        opacity: 1;
+    }
+}
+
+/* Альтернативное правило для портретной ориентации */
+@media (orientation: portrait) {
+    .dl_span {
+        display: none !important;
+    }
+    
+    .dl_header_logo {
+        gap: 0;
+    }
+    
+    .dl_nav_icon {
+        display: block !important;
+        width: 28px !important;
+        height: 28px !important;
+    }
+    
+    .dl_nav_text {
+        display: none !important;
+    }
+    
+    .dl_header_nav {
+        gap: clamp(1.5rem, 4vw, 2.5rem);
+    }
+}
+
+/* Адаптивность для больших экранов */
 @media (max-width: 1200px) {
     .container {
         padding: 0 2rem;
@@ -134,7 +273,11 @@
     }
     
     .dl_header_nav {
-        max-width: 55%;
+        max-width: 40%;
+    }
+    
+    .dl_header_logo {
+        max-width: 40%;
     }
 }
 
@@ -150,70 +293,258 @@
     
     .dl_header_nav {
         gap: clamp(0.75rem, 1.5vw, 1.5rem);
-        max-width: 60%;
+        max-width: 45%;
     }
     
     .dl_header_logo {
         gap: 0.75rem;
+        max-width: 45%;
     }
 }
 
-@media (max-width: 1500px) {
+/* Планшеты и маленькие экраны */
+@media (max-width: 768px) {
     .container {
         padding: 0 1rem;
-        justify-content: space-around; /* Лучшее распределение на маленьких экранах */
+        justify-content: space-between;
+        gap: 1rem;
     }
     
     .container.scrolled {
-        width: 95%;
+        width: 92%;
         padding: 0 1rem;
     }
     
     .dl_header_nav {
         position: static;
         transform: none;
-        gap: clamp(0.5rem, 2vw, 1rem);
+        gap: clamp(1.2rem, 5vw, 2rem);
         max-width: none;
-        flex: 1; /* Занимает доступное пространство */
-        justify-content: flex-end;
         margin-left: auto;
+        flex-shrink: 0;
+    }
+    
+    .dl_header_logo {
+        max-width: auto;
+        flex-shrink: 0;
     }
     
     .dl_span {
-        font-size: clamp(0.2rem, 1.5vw, 1.4rem);
+        display: none !important;
     }
     
     .dl_logo {
-        height: 50px;
-        min-height: 28px;
+        height: 45px;
+        min-height: 35px;
     }
     
     .container.scrolled .dl_logo {
-        height: 28px;
+        height: 35px;
+    }
+    
+    /* Большие иконки на планшетах */
+    .dl_nav_icon {
+        display: block !important;
+        width: 26px !important;
+        height: 26px !important;
+    }
+    
+    .dl_nav_text {
+        display: none !important;
     }
 }
 
+/* Очень маленькие экраны */
 @media (max-width: 480px) {
     .container {
-        height: 60px; /* Фиксированная высота для очень маленьких экранов */
+        height: 60px;
+        min-height: 60px;
         padding: 0 0.75rem;
+        gap: 0.5rem;
     }
     
     .container.scrolled {
         height: 50px;
-        width: 98%;
+        min-height: 50px;
+        width: 96%;
         top: 0.5rem;
+        border-radius: 25px;
+        padding: 0 0.75rem;
     }
     
     .dl_header_nav {
-        gap: 0.5rem;
+        gap: clamp(1rem, 6vw, 1.8rem);
     }
     
     .dl_header_link {
-        font-size: 0.75rem;
+        padding: 0.4rem;
     }
     
     .dl_logo {
+        height: 42px;
+        min-height: 32px;
+        max-height: 42px;
+    }
+    
+    .container.scrolled .dl_logo {
+        height: 34px;
+        min-height: 28px;
+        max-height: 34px;
+    }
+    
+    .dl_span {
+        display: none !important;
+    }
+    
+    /* Средние иконки на телефонах */
+    .dl_nav_icon {
+        width: 24px !important;
+        height: 24px !important;
+        display: block !important;
+    }
+    
+    .dl_header_logo {
+        gap: 0;
+    }
+}
+
+/* Дополнительная адаптивность для очень узких экранов */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 0.6rem;
+        gap: 0.5rem;
+    }
+    
+    .container.scrolled {
+        width: 98%;
+        padding: 0 0.6rem;
+    }
+    
+    .dl_header_nav {
+        gap: clamp(0.8rem, 5vw, 1.5rem);
+    }
+    
+    .dl_span {
+        display: none !important;
+    }
+    
+    /* Чуть меньшие иконки на очень маленьких экранах */
+    .dl_nav_icon {
+        width: 22px !important;
+        height: 22px !important;
+        display: block !important;
+    }
+    
+    .dl_header_logo {
+        gap: 0;
+    }
+    
+    .dl_logo {
+        height: 38px;
+        min-height: 28px;
+        max-height: 38px;
+    }
+    
+    .container.scrolled .dl_logo {
         height: 30px;
+        min-height: 26px;
+        max-height: 30px;
+    }
+}
+
+/* Широкие планшеты в ЛАНДШАФТНОЙ ориентации - показываем текст */
+@media (min-width: 768px) and (orientation: landscape) {
+    .dl_nav_icon {
+        display: none !important;
+    }
+    
+    .dl_nav_text {
+        display: inline !important;
+    }
+    
+    .dl_span {
+        display: inline !important;
+    }
+    
+    .container.scrolled {
+        width: 75%;
+    }
+    
+    .dl_header_nav {
+        max-width: 45%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .dl_header_logo {
+        max-width: 40%;
+        gap: 1rem;
+    }
+}
+
+/* Широкие планшеты в портретном режиме - большие иконки */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .dl_nav_icon {
+        display: block !important;
+        width: 30px !important;
+        height: 30px !important;
+    }
+    
+    .dl_nav_text {
+        display: none !important;
+    }
+    
+    .dl_span {
+        display: none !important;
+    }
+    
+    .container {
+        padding: 0 2rem;
+    }
+    
+    .dl_header_nav {
+        max-width: none;
+        gap: clamp(2rem, 5vw, 3rem);
+        position: static;
+        transform: none;
+        margin-left: auto;
+    }
+    
+    .dl_header_logo {
+        max-width: auto;
+        gap: 0;
+    }
+    
+    .dl_logo {
+        height: 50px;
+    }
+}
+
+/* Очень широкие экраны */
+@media (min-width: 1600px) {
+    .container.scrolled {
+        width: 60%;
+        max-width: 1600px;
+    }
+    
+    .dl_header_nav {
+        max-width: 45%;
+    }
+    
+    .dl_header_logo {
+        max-width: 30%;
+    }
+}
+
+/* Ультраширокие экраны */
+@media (min-width: 2000px) {
+    .container {
+        padding: 0 4rem;
+    }
+    
+    .container.scrolled {
+        width: 50%;
+        padding: 0 3rem;
     }
 }
