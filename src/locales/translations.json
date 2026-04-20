@@ -1,7 +1,9 @@
 {
     "ru": {
         "manufacturer": {
-            "title": "ОАО \"Дубровенский льнозавод\""
+            "title": "ОАО «Дубровенский льнозавод»",
+            "description": "ОАО «Дубровенский льнозавод» - одно из самых крупных предприятий республики в своей отрасли. Основным видом его деятельности является выработка льноволокна.",
+            "ogdescription": "ОАО «Дубровенский льнозавод» - одно из самых крупных предприятий республики в своей отрасли."
         },
         "title": {
             "index": "Главная",
@@ -12,7 +14,9 @@
 
     "en": {
         "manufacturer": {
-            "title": "Dubrovensky Flax Mill OJSC"
+            "title": "Dubrovensky Flax Mill OJSC",
+            "description": "Dubrovensky Flax Mill OJSC is one of the largest enterprises in the republic in its industry. Its main activity is the production of flax fiber.",
+            "ogdescription": "Dubrovensky Flax Mill OJSC is one of the largest enterprises in the republic in its industry."
         },
         "title": {
             "index": "Home",
@@ -23,7 +27,9 @@
 
     "cn": {
         "manufacturer": {
-            "title": "杜布罗夫诺亚麻厂开放式股份公司"
+            "title": "杜布罗夫诺亚麻厂开放式股份公司",
+            "description": "杜布罗夫诺亚麻厂开放式股份公司是该共和国本行业最大的企业之一。其主要业务是生产亚麻纤维。",
+            "ogdescription": "杜布罗夫诺亚麻厂开放式股份公司是该共和国本行业最大的企业之一"
         },
         "title": {
             "index": "主页",
@@ -34,7 +40,9 @@
 
     "be": {
         "manufacturer": {
-            "title": "ААТ \"Дубровенскі льнозавод\""
+            "title": "ААТ «Дубровенскі льнозавод»",
+            "description": "ААТ «Дубровенскі льнозавод» — адно з самых буйных прадпрыемстваў рэспублікі ў сваёй галіне. Асноўным відам яго дзейнасці з'яўляецца вытворчасць льновалакна.",
+            "ogdescription": "ААТ «Дубровенскі льнозавод» — адно з самых буйных прадпрыемстваў рэспублікі ў сваёй галіне."
         },
         "title": {
             "index": "Галоўная",

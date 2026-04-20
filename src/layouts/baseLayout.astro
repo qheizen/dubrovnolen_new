@@ -1,15 +1,14 @@
 ---
-import Title from '../components/title.astro';
-import { useTranslations } from '../i18n/utils';
-
+import Title from '../components/head_title.astro';
+import Meta from '../components/head_meta.astro';
 const { titleKey, lang } = Astro.props;
-const t = useTranslations(lang);
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
+    <Meta lang={lang} />
     <Title titleKey={titleKey} lang={lang} />
   </head>
   <body>
