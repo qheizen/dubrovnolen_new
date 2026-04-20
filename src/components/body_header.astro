@@ -1,4 +1,5 @@
 ---
+import '../styles/header.css'
 import { useTranslations, type Language } from '../i18n/utils';
 
 interface IHeader {
@@ -17,10 +18,10 @@ const manufacturer = t('manufacturer.title')
             <span class="dl_span" id="dl_header_main_span">{manufacturer}</span>
         </div>
         <nav class="dl_header_nav" id="navigation">
-            <a href=`/${lang}/` class="dl_header_link">Главная</a>
-            <a href=`/${lang}/products` class="dl_header_link">Продукция</a>
-            <a href=`/${lang}/contacts` class="dl_header_link">Контакты</a>
-            <a href=`/${lang}/about` class="dl_header_link">О нас</a>
+            <a href=`/${lang}/` class="dl_header_link">{t('title.index')}</a>
+            <a href=`/${lang}/products` class="dl_header_link">{t('title.products')}</a>
+            <a href=`/${lang}/contacts` class="dl_header_link">{t('title.contacts')}</a>
+            <a href=`/${lang}/about` class="dl_header_link">{t('title.about')}</a>
         </nav>
     </div>
 </header>
