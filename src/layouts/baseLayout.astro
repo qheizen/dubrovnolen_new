@@ -7,11 +7,10 @@ const { titleKey, lang } = Astro.props;
 <!doctype html>
 <html lang={lang}>
   <head>
-    <meta charset="utf-8" />
-    <Meta lang={lang} />
-    <Title titleKey={titleKey} lang={lang} />
+    <Meta lang={lang}/>
+    <Title titleKey={titleKey} lang={lang}/>
   </head>
   <body>
-    <slot />
+    <slot/>
   </body>
 </html>
