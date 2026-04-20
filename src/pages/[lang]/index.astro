@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/baseLayout.astro'
+import Layout from '../../layouts/baseLayout.astro';
 import { languages } from '../../i18n/utils';
 
 export function getStaticPaths() {
@@ -11,6 +11,4 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 ---
 <Layout titleKey = 'index' lang = {lang}>
-  <p>Привет</p> 
-  <p>LANG = {Astro.params.lang}</p>
 </Layout>
