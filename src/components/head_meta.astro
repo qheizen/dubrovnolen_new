@@ -1,0 +1,23 @@
+---
+import { useTranslations, type Language } from '../i18n/utils';
+
+interface IMeta {
+  lang: Language;
+}
+
+const {lang} = Astro.props;
+
+const t = useTranslations(lang);
+const description = t('manufacturer.description')
+const ogdesctiption = t('manufacturer.ogdescription')
+
+---
+
+<meta name="description" content={description}>
+<meta name="robots" content="index,contacts,about">
+<meta property="og:description" content={ogdesctiption}>
+<meta property="og:url" content="http://dubrovnolen.by">
+<meta property="og:type" content="website">
+
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="/favicon.ico">
