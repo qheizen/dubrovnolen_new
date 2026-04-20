@@ -1,5 +1,7 @@
 ---
+import '../../styles/global.css';
 import Layout from '../../layouts/baseLayout.astro';
+import MainPage from '../../components/body_header.astro';
 import { languages } from '../../i18n/utils';
 
 export function getStaticPaths() {
@@ -11,4 +13,5 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 ---
 <Layout titleKey = 'index' lang = {lang}>
+  <MainPage lang = {lang}/>
 </Layout>

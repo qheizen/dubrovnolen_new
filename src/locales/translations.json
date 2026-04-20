@@ -8,7 +8,8 @@
         "title": {
             "index": "Главная",
             "contacts": "Контакты",
-            "about": "Предприятие"
+            "about": "Предприятие",
+            "products": "Продукция"
         }
     },
 
@@ -21,7 +22,8 @@
         "title": {
             "index": "Home",
             "contacts": "Contacts",
-            "about": "Enterprise"
+            "about": "Enterprise",
+            "products": "Products"
         }
     },
 
@@ -47,7 +49,8 @@
         "title": {
             "index": "Галоўная",
             "contacts": "Кантакты",
-            "about": "Прадпрыемства"
+            "about": "Прадпрыемства",
+            "products": "Прадукцыя"
         }
     }
 }
