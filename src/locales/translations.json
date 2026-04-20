@@ -1,0 +1,45 @@
+{
+    "ru": {
+        "manufacturer": {
+            "title": "ОАО \"Дубровенский льнозавод\""
+        },
+        "title": {
+            "index": "Главная",
+            "contacts": "Контакты",
+            "about": "Предприятие"
+        }
+    },
+
+    "en": {
+        "manufacturer": {
+            "title": "Dubrovensky Flax Mill OJSC"
+        },
+        "title": {
+            "index": "Home",
+            "contacts": "Contacts",
+            "about": "Enterprise"
+        }
+    },
+
+    "cn": {
+        "manufacturer": {
+            "title": "杜布罗夫诺亚麻厂开放式股份公司"
+        },
+        "title": {
+            "index": "主页",
+            "contacts": "联系方式",
+            "about": "企业"
+        }
+    },
+
+    "be": {
+        "manufacturer": {
+            "title": "ААТ \"Дубровенскі льнозавод\""
+        },
+        "title": {
+            "index": "Галоўная",
+            "contacts": "Кантакты",
+            "about": "Прадпрыемства"
+        }
+    }
+}
