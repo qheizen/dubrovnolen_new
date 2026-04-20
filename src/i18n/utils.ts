@@ -4,7 +4,7 @@ export const languages = {
   ru: 'Русский',
   en: 'English',
   cn: '中文',
-  be: 'Белорусский',
+  be: 'Беларуская',
 };
 
 export const defaultLang = 'ru';
