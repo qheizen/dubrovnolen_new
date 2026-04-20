@@ -1,0 +1,10 @@
+---
+export const prerender = true;
+---
+<script>
+  const browserLang = navigator.language.split('-')[0];
+  const lang = ['ru','en','cn','be'].includes(browserLang) ? browserLang : 'ru';
+  location.replace(`/${lang}/`);
+</script>
+
+<noscript><a href="/ru/">/ru/</a></noscript>
