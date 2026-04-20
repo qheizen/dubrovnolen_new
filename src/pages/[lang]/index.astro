@@ -14,4 +14,17 @@ const { lang } = Astro.params;
 ---
 <Layout titleKey = 'index' lang = {lang}>
   <MainPage lang = {lang}/>
+  <div style="height: 5000px; background: repeating-linear-gradient(
+    45deg,
+    #f8f9fa,
+    #f8f9fa 40px,
+    #e9ecef 40px,
+    #e9ecef 80px
+  ); margin-top: 40px; border-top: 2px dashed #ccc;">
+    <div style="padding: 40px; text-align: center; color: #666; font-family: system-ui;">
+      <h2>↓ Здесь очень много высоты для теста скролла ↓</h2>
+      <p>Высота: 5000px</p>
+      <p>Можешь менять значение как угодно</p>
+    </div>
+  </div>
 </Layout>

@@ -20,7 +20,7 @@
 }
 
 .container.scrolled {
-    width: 70%;
+    width: 90%;
     max-width: 1400px;
     height: 6vh;
     min-height: 50px;
@@ -253,7 +253,7 @@
     }
     
     .container.scrolled {
-        width: 80%;
+        width: 90%;
     }
     
     .dl_header_nav {
@@ -444,7 +444,7 @@
     }
     
     .container.scrolled {
-        width: 75%;
+        width: 95%;
     }
     
     .dl_header_nav {
@@ -499,8 +499,8 @@
 
 @media (min-width: 1600px) {
     .container.scrolled {
-        width: 60%;
-        max-width: 1600px;
+        width: 90%;
+        max-width: 1800px;
     }
     
     .dl_header_nav {
@@ -518,7 +518,7 @@
     }
     
     .container.scrolled {
-        width: 50%;
+        width: 100%;
         padding: 0 3rem;
     }
 }
